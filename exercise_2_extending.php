@@ -18,3 +18,43 @@ Make sure that each print is on a different line.
 Try to get this error on the screen= Fatal error: Uncaught Error: Call to undefined method Beverage::getAlcoholPercentage() in /var/www/becode/workshop/exercise2.php on line 64
 USE TYPEHINTING EVERYWHERE!
 */
+class Beverage {
+    public string $color;
+    public float $price;
+    public string $temperature;
+    public string $name;
+
+    public function __construct(string $name,string $color,float $price){
+        $this->temperature = 'cold';
+        $this->name = $name;
+        $this->color = $color;
+        $this->price = $price;
+    }
+    public function getInfo():string{
+        $message = "This beverage is $this->temperature and $this->color.";
+        return $message;
+    }
+
+}
+$cola = new Beverage('cola','black',2.00);
+echo $cola->getInfo($cola);
+echo "</br> $cola->temperature";
+echo "</br> € $cola->price";
+
+#extention
+class Beer extends Beverage {
+    public float $alcoholPercentage;
+
+    public function __construct(string $name, string $color, float $price,float $alcoholPercentage){
+        $this->alcoholPercentage = $alcoholPercentage;
+        parent:: __construct($name, $color, $price);
+        
+    }
+    public function getAlcoholPercentage(){
+        return $this->alcoholPercentage;
+    }
+
+}
+$duvel = new Beer('duvel','blond',3.5,8.5);
+echo "</br>$duvel->alcoholPercentage";
+echo "</br>" . $duvel->getAlcoholPercentage();
