@@ -49,8 +49,11 @@ class Beer extends Beverage {
     public function getAlcoholPercentage():float{
         return $this->alcoholPercentage;
     }
-    public function beerInfo():string{
-        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->alcoholPercentage . " and I have a ". $this->color . " color";
+    private function beerInfo():string{
+        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->getAlcoholPercentage() . " and I have a ". $this->getColor() . " color";
+    }
+    public function getBeerInfo(){
+        return $this->beerInfo();
     }
 
 }
@@ -59,5 +62,5 @@ echo $duvel->getInfo();
 echo "</br>" . $duvel->getAlcoholPercentage();
 $duvel->disAlcoholPercentage();
 echo "</br>".$duvel->setColor('light');
-echo "</br>" . $duvel->beerInfo();
+echo "</br>" . $duvel->getBeerInfo();
 
