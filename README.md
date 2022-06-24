@@ -1,4 +1,8 @@
-# <span style="color:red">classes</span>
+<style>
+r { color:Red}
+
+</style>
+# <r>classes</r>
 ## exercise 1 
 #### TODO: Create a class beverage:
 ```php
