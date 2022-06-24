@@ -99,4 +99,88 @@ once with getter, once just calling the PUBLIC propperty.
 ```
 cola object does not posses the alcoholpercentage getter nor does it posses the propperty which it wants to get.
 ## exercise 3
+#### TODO: Copy the code of exercise 2 to here and delete everything related to cola.
+```php
+class Beverage {
+    public string $color;
+    public float $price;
+    public string $temperature;
+    public string $name;
 
+    public function __construct(string $name,string $color,float $price){
+        $this->temperature = 'cold';
+        $this->name = $name;
+        $this->color = $color;
+        $this->price = $price;
+    }
+    public function getInfo():string{
+        $message = "This beverage is $this->temperature and $this->color.";
+        return $message;
+    }
+
+}
+#extention
+class Beer extends Beverage {
+    public float $alcoholPercentage;
+
+    public function __construct(string $name, string $color, float $price,float $alcoholPercentage){
+        $this->alcoholPercentage = $alcoholPercentage;
+        parent:: __construct($name, $color, $price);
+        
+    }
+    public function getAlcoholPercentage(){
+        return $this->alcoholPercentage;
+    }
+
+}
+$duvel = new Beer('duvel','blond',3.5,8.5);
+echo "</br>$duvel->alcoholPercentage";
+echo "</br>" . $duvel->getAlcoholPercentage();
+```
+deleted everything to do with cola
+#### TODO: Make all properties private.
+```php
+    #inside beverage class
+    private string $color;
+    private float $price;
+    private string $temperature;
+    private string $name;
+    #inside beer class
+    private float $alcoholPercentage;
+```
+changed to private
+#### TODO: Make all the other prints work without error.
+see above
+#### TODO: After fixing the errors. Change the color of Duvel to light instead of blond and also print this new color on the screen after all the other things that were already printed (to be sure that the color has changed).
+```php
+    public function getColor():string{
+        return $this->color;
+    }
+    public function setColor(string $color):string{
+        return $this->color = $color;
+    }
+```
+at this point i wrote getter and setter 
+```php
+echo "</br>".$duvel->setColor('light');
+```
+set to light
+#### TODO: Create a new private method in the Beer class called beerInfo which returns "Hi i'm Duvel and have an alcochol percentage of 8.5 and I have a light color."
+```php
+    private function beerInfo():string{
+        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->getAlcoholPercentage() . " and I have a ". $this->getColor() . " color";
+    }
+```
+#### TODO: Print this method on the screen on a new line.
+calling beerinfo isnt possible sinds private... hence:
+```php
+    public function getBeerInfo(){
+        return $this->beerInfo();
+    }
+```
+getter for beerinfo 
+```php
+echo "</br>" . $duvel->getBeerInfo();
+```
+and now calling it inside and echo
+## exercise 4
