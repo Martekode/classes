@@ -50,7 +50,7 @@ class Beer extends Beverage {
         return $this->alcoholPercentage;
     }
     private function beerInfo():string{
-        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->getAlcoholPercentage() . " and I have a ". $this->getColor() . " color";
+        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->alcoholPercentage . " and I have a ". $this->color . " color";
     }
     public function getBeerInfo(){
         return $this->beerInfo();

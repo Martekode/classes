@@ -184,3 +184,76 @@ echo "</br>" . $duvel->getBeerInfo();
 ```
 and now calling it inside and echo
 ## exercise 4
+#### Copy the code of exercise 3 to here.
+```php
+class Beverage {
+    private string $color;
+    private float $price;
+    private string $temperature;
+    private string $name;
+
+    public function __construct(string $name,string $color,float $price){
+        $this->temperature = 'cold';
+        $this->name = $name;
+        $this->color = $color;
+        $this->price = $price;
+    }
+    public function getInfo():string{
+        $message = "This beverage is $this->temperature and $this->color for € $this->price.";
+        return $message;
+    }
+    public function getColor():string{
+        return $this->color;
+    }
+    public function setColor(string $color):string{
+        return $this->color = $color;
+    }
+}
+#extention
+class Beer extends Beverage {
+    private float $alcoholPercentage;
+
+    public function __construct(string $name, string $color, float $price,float $alcoholPercentage){
+        $this->alcoholPercentage = $alcoholPercentage;
+        parent:: __construct($name, $color, $price);
+        
+    }
+    public function disAlcoholPercentage():void{
+        echo "</br>".$this->alcoholPercentage;
+    }
+    public function getAlcoholPercentage():float{
+        return $this->alcoholPercentage;
+    }
+    private function beerInfo():string{
+        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->getAlcoholPercentage() . " and I have a ". $this->getColor() . " color";
+    }
+    public function getBeerInfo(){
+        return $this->beerInfo();
+    }
+
+}
+$duvel = new Beer('duvel','blond',3.5,8.5);
+echo $duvel->getInfo();
+echo "</br>" . $duvel->getAlcoholPercentage();
+$duvel->disAlcoholPercentage();
+echo "</br>".$duvel->setColor('light');
+echo "</br>" . $duvel->getBeerInfo();
+```
+#### TODO: Make all properties protected.
+```php
+#in beverage
+    protected string $color;
+    protected float $price;
+    protected string $temperature;
+    protected string $name;
+# in beer 
+    protected float $alcoholPercentage;
+```
+#### TODO: this code should work but you could chenge things. dont use getters in beerinfo
+```php
+private function beerInfo():string{
+        return "</br> Hi i'm Duvel and have an alcochol percentage of " . $this->alcoholPercentage . " and I have a ". $this->color . " color";
+    }
+```
+sinds the color is protected both the parent and the child class can access it. that's why we don't need getter here for color.
+## exercise 5
